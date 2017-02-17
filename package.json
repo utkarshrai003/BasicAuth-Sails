@@ -22,6 +22,7 @@
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
     "jsonwebtoken": "^7.3.0",
+    "node-inspector": "^0.12.8",
     "rc": "1.0.1",
     "sails": "~0.12.11",
     "sails-disk": "~0.10.9",
