@@ -9,6 +9,27 @@ module.exports = {
 
   attributes: {
 
+    first_name: {
+      type: 'string'
+    },
+    last_name: {
+      type: 'string'
+    },
+    email: {
+      type: 'email',
+      required: true
+    },
+    password: {
+      type: 'string',
+      required: true
+    },
+    confirmation_token: {
+      type: 'string'
+    },
+    confirmed: {
+      type: 'boolean',
+      defaultsTo: false
+    }
+
   }
 };
-
