@@ -1,6 +1,6 @@
 // This service holds the functions for generating and verifying a JSON Web Token
 
-var jwt = require('jsonwebtoken'),
+var jwt = require('jsonwebtoken');
 var tokenSecret = "secretissecet"; // this must be in configuration
 
 // Generates a token from supplied payload
@@ -9,7 +9,7 @@ module.exports.issue_token = function(payload) {
     payload,
     tokenSecret, // Token Secret that we sign it with
     {
-      expiresInMinutes : 180 // Token Expire time
+      expiresIn : 180 // Token Expire time
     }
   );
 };
@@ -20,10 +20,6 @@ module.exports.verify_token = function(token, callback) {
     token, // The token to be verified
     tokenSecret, // Same token we used to sign
     {}, // No Option, for more see https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
-    function() {
-      {
-        message: "token is verified"
-      }
-    } //Pass errors or decoded token to callback
+    callback
   );
 };
