@@ -63,5 +63,16 @@ afterCreate: function(user, cb) {
       cb();
     }
   });
+},
+
+comparePassword: function(password, user, cb) {
+  bcrypt.compare(password, user.password, function (err, match) {
+    if(err) cb(err);
+    if(match) {
+      cb(null, true);
+    } else {
+      cb(err);
+    }
+  })
 }
 }
