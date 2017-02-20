@@ -20,7 +20,7 @@ module.exports = {
     }
 
 		User.findOne({email: params.email}).exec(function(err, record) {
-			if(err || !record) {
+			if(!record) {
 				return res.send(401, { error: "No such user" })
 			}
 
