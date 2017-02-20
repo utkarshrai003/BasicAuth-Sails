@@ -19,6 +19,12 @@ module.exports = {
 			if (err) { res.send(400, {error: err}) }
 		  res.send(200, {data: record});
 	 });
-	}
+ },
+
+ index: function(req, res) {
+	 User.find({}).exec(function(err, records) {
+		 res.send( 200, {data: records} );
+	 });
+ }
 
 };
