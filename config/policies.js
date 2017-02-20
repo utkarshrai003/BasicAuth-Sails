@@ -26,7 +26,8 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  // Protects each n every route
+  '*': false,
 
   /***************************************************************************
   *                                                                          *
@@ -48,4 +49,12 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  UserController: {
+    signup: [],
+    index: ['isAuthorized']
+  },
+  AuthController: {
+    signin: []
+  }
 };
