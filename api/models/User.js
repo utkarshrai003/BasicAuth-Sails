@@ -6,6 +6,7 @@
  */
 
  var bcrypt = require('bcrypt');
+ var randtoken = require('rand-token');
 
 module.exports = {
 
@@ -48,4 +49,16 @@ beforeCreate: function(user, cb) {
   });
 },
 
-};
+// Method to save generate account confirmation token and send a mail with that token
+afterCreate: function(user, cb) {
+  user.update({ confirmation_token: randtoken.generate(16) })
+  .exec(function(err, record) {
+    if (err) {
+      console.log(err);
+      cb(err);
+    } else {
+      MailService.send_confirmation_mail(user);
+      cb();
+    }
+  });
+}
