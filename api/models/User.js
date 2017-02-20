@@ -12,6 +12,8 @@ module.exports = {
 
   attributes: {
 
+    schema: true,
+
     first_name: {
       type: 'string'
     },
@@ -51,14 +53,15 @@ beforeCreate: function(user, cb) {
 
 // Method to save generate account confirmation token and send a mail with that token
 afterCreate: function(user, cb) {
-  user.update({ confirmation_token: randtoken.generate(16) })
+  User.update({email: user.email}, { confirmation_token: randtoken.generate(16) })
   .exec(function(err, record) {
     if (err) {
       console.log(err);
       cb(err);
     } else {
-      MailService.send_confirmation_mail(user);
+      MailerService.send_confirmation_mail(record[0]);
       cb();
     }
   });
+}
 }
