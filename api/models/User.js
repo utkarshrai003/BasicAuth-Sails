@@ -34,6 +34,11 @@ module.exports = {
     confirmed: {
       type: 'boolean',
       defaultsTo: false
+    },
+
+    vehicles: {
+      collection: 'vehicle',
+      via: 'owners'
     }
 
   },
