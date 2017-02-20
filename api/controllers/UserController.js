@@ -9,7 +9,6 @@ module.exports = {
 
 	signup: function(req, res) {
 		params = req.query;
-
 		if (!params.email || !params.password) {
 			res.send(400, {error: 'Both email and password required to create an account.'});
 		}
@@ -22,8 +21,8 @@ module.exports = {
 	  })
 		.exec(function(err, record) {
 			if (err) { res.send(400, {error: err}) }
-			res.send(record);
-	 })
+			res.send(200, { data: record });
+	 });
 	}
 
 };
